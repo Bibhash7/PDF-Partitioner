@@ -21,10 +21,12 @@ def success():
 @app.route("/convert")
 def cropper():
     flag = PDFCropper.cropper(success.start_page,success.end_page,success.file_name)
-    if(flag):
-        return render_template("failure.html",size = flag)
-    else:
+    if(flag == 0):
         return render_template("download.html")
+    elif(flag == 1):
+        return render_template("exception.html")
+    else:
+        return render_template("failure.html", size=flag)
 
 
 
