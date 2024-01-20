@@ -1,5 +1,4 @@
-from flask import *
-
+from flask import render_template, request, send_file, Flask
 import PDFCropper
 
 app = Flask(__name__)
