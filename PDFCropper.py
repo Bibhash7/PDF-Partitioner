@@ -4,7 +4,8 @@ def cropper(start,end,file):
     if(start !=  0):
         start -=1
     try:
-        inputPdf = PdfReader(open(file,"rb"))
+        f = open(file,"rb")
+        inputPdf = PdfReader(f)
         if(start > len(inputPdf.pages) or end > len(inputPdf.pages) or start >= end):
             return len(inputPdf.pages)
         outPdf = PdfWriter()
@@ -15,3 +16,5 @@ def cropper(start,end,file):
         return 0
     except:
         return 1
+    finally:
+        f.close()

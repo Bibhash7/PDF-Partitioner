@@ -1,6 +1,6 @@
-from flask import *
-
+from flask import render_template, request, send_file, Flask
 import PDFCropper
+import os
 
 app = Flask(__name__)
 
@@ -24,16 +24,34 @@ def cropper():
     if(flag == 0):
         return render_template("download.html")
     elif(flag == 1):
-        return render_template("exception.html")
+        os.remove(success.file_name)
+        msg = "Format Error: Please upload non encrypted PDF file."
+        return render_template("exception.html",msg = msg)
     else:
-        return render_template("failure.html", size=flag)
+        msg = f"""Failed: The PDF has only {flag} pages. Correct the range:"""
+        os.remove(success.file_name)
+        return render_template("exception.html", msg = msg)
 
 
 
 @app.route("/download")
 def download():
-    filename=success.file_name.split(".")[0]+"cropped.pdf"
-    return send_file(filename,as_attachment=True)
+    try:
+        try:
+            filename=success.file_name.split(".")[0]+"cropped.pdf"
+            return send_file(filename,as_attachment=True)
+        finally:
+            os.remove(filename)
+            os.remove(success.file_name)
+    except:
+        msg = "File can be downloaded only once. Reload the application and try again."
+        return render_template("exception.html",msg = msg)
+
+@app.errorhandler(404)
+def message(msg):
+    msg = "Something went wrong. Please try again."
+    return render_template("exception.html",msg=msg)
+
 
 
 if __name__ == "__main__":
