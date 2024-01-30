@@ -7,16 +7,12 @@
     <style>
         html {
             font-family: Arial, sans-serif;
-            margin: auto;
+            margin: 0;
             padding: 0;
             height: 100vh;
-            background-image: linear-gradient(to top, #d6455b, #e3779d, #e4a8d0, #e9d6f0, #ffffff);
+            background: linear-gradient(to top, #4caf50, #03c9b1, #73daf0, #cee8ff, #ffffff);
             overflow: hidden;
 
-        }
-        body {
-            font-family: Arial, sans-serif;
-            margin: auto;
         }
 
         form {
@@ -52,13 +48,23 @@
 </head>
 <body>
 
-    <center><h1>{{msg}} </h1></center>
-    <br>
-    <form id="pdfForm" action = "/">
-    <input type = "submit" value="Reload">
+    <center><h1><u>PDF Partitioner</u></h1></center>
+    <center><h3>Effortlessly extract specific pages from your extensive 100-page PDFs by specifying the desired range.</h3></center>
+
+    <form id="pdfForm" action = "/success" method = "post" enctype="multipart/form-data">
+        <label for="startPage">Start Page:</label>
+        <input type="number" id="startPage" name="start" required>
+
+        <label for="endPage">End Page:</label>
+        <input type="number" id="endPage" name="end" required>
+
+        <label for="pdfFile">Select PDF File:</label>
+        <input type="file" id="pdfFile" name="file" accept=".pdf" required>
+
+        <input type = "submit" value="Upload">
+
+        <right><span>&copy; Bibhash Ghosh</span></right>
     </form>
 
 </body>
 </html>
-
-

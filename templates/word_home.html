@@ -10,7 +10,7 @@
             margin: auto;
             padding: 0;
             height: 100vh;
-            background-image: linear-gradient(to top, #d6455b, #e3779d, #e4a8d0, #e9d6f0, #ffffff);
+            background: linear-gradient(to top, #4caf50, #03c9b1, #73daf0, #cee8ff, #ffffff);
             overflow: hidden;
 
         }
@@ -52,13 +52,12 @@
 </head>
 <body>
 
-    <center><h1>{{msg}} </h1></center>
-    <br>
-    <form id="pdfForm" action = "/">
-    <input type = "submit" value="Reload">
+
+    <center><h1> Coming soon!</h1></center>
+    <form id="pdfForm" action = "/success" method = "post" enctype="multipart/form-data">
+    <label for="pdfFile">Select PDF File:</label>
+        <input type="file" id="pdfFile" name="file" accept=".pdf" required>
     </form>
 
 </body>
 </html>
-
-

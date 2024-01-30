@@ -10,7 +10,7 @@
             margin: auto;
             padding: 0;
             height: 100vh;
-            background-image: linear-gradient(to top, #d6455b, #e3779d, #e4a8d0, #e9d6f0, #ffffff);
+            background: linear-gradient(to top, #4caf50, #03c9b1, #73daf0, #cee8ff, #ffffff);
             overflow: hidden;
 
         }
@@ -51,14 +51,19 @@
     </style>
 </head>
 <body>
-
-    <center><h1>{{msg}} </h1></center>
+    <center><h1> Most of the Tools you need to work on a PDF in one place.</h1></center>
     <br>
-    <form id="pdfForm" action = "/">
-    <input type = "submit" value="Reload">
+    <form action="/crop" method = "get">
+    <center><input type="submit" value="Crop"></center>
+    </form>
+    <br>
+    <form  action="/merge" method = "get">
+    <center><input type="submit" value="Merge"></center>
+    </form>
+    <br>
+    <form  action="/word" method = "get">
+    <center><input type="submit" value="Convert to Word"></center>
     </form>
 
 </body>
 </html>
-
-

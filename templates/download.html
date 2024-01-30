@@ -5,9 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PDF Partitioner</title>
     <style>
+        html {
+            font-family: Arial, sans-serif;
+            margin: auto;
+            padding: 0;
+            height: 100vh;
+            background: linear-gradient(to top, #4caf50, #03c9b1, #73daf0, #cee8ff, #ffffff);
+            overflow: hidden;
+
+        }
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
+            margin: auto;
         }
 
         form {
@@ -43,8 +52,7 @@
 </head>
 <body>
 
-
-    <form action="/download" method = "get">
+    <form id = "pdfForm" action="/download" method = "get">
     <center><h1> Successfully extracted!</h1></center>
     <center><h2>Download your extracted file here!</h2></center>
     <center><input type="submit" value="Download"></center>

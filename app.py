@@ -6,7 +6,18 @@ app = Flask(__name__)
 
 @app.route("/")
 def upload():
-    return render_template("file_upload.html")
+    return render_template("index.html")
+@app.route("/crop")
+def crop():
+    return render_template("cropper_home.html")
+
+@app.route("/merge")
+def merge():
+    return render_template("merger_home.html")
+
+@app.route("/word")
+def word():
+    return render_template("word_home.html")
 
 @app.route("/success",methods=["POST"])
 def success():
