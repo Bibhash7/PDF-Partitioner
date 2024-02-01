@@ -52,10 +52,13 @@
 </head>
 <body>
 
-    <form id = "pdfForm" action="/download/1" method = "get">
-    <center><h1> Successfully Processed!</h1></center>
-    <center><h2>Download your processed file here!</h2></center>
-    <center><input type="submit" value="Download"></center>
+
+    <center><h1> Coming soon!</h1></center>
+    <form id="pdfForm" action = "/success/2" method = "post" enctype="multipart/form-data">
+    <label for="pdfFile">Select PDF File:</label>
+        <input type="file" id="pdfFile" name="file" accept=".pdf" required>
+        <input type = "submit" value="Upload">
+    </form>
 
 </body>
 </html>

@@ -5,9 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PDF Partitioner</title>
     <style>
-        body {
+        html {
             font-family: Arial, sans-serif;
-            margin: 20px;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background: linear-gradient(to top, #4caf50, #03c9b1, #73daf0, #cee8ff, #ffffff);
+            overflow: hidden;
+
         }
 
         form {
@@ -44,9 +49,9 @@
 <body>
 
     <center><h1><u>PDF Partitioner</u></h1></center>
-    <center><h3>Effortlessly extract specific pages from your extensive 100-page PDFs by specifying the desired range—empowering you with precision and efficiency in document handling. Streamline your workflow and get the pages you need with ease.</h3></center>
+    <center><h3>Effortlessly extract specific pages from your extensive 100-page PDFs by specifying the desired range.</h3></center>
 
-    <form id="pdfForm" action = "/success" method = "post" enctype="multipart/form-data">
+    <form id="pdfForm" action = "/success/1" method = "post" enctype="multipart/form-data">
         <label for="startPage">Start Page:</label>
         <input type="number" id="startPage" name="start" required>
 

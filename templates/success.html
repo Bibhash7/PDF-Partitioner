@@ -5,11 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PDF Partitioner</title>
     <style>
-        body {
+        html {
             font-family: Arial, sans-serif;
-            margin: 20px;
-        }
+            margin: auto;
+            padding: 0;
+            height: 100vh;
+            background: linear-gradient(to top, #4caf50, #03c9b1, #73daf0, #cee8ff, #ffffff);
+            overflow: hidden;
 
+        }
         form {
             max-width: 600px;
             margin: auto;
@@ -47,8 +51,8 @@
 	<center><p>File Name: {{name}}</p></center>
 	<center><h3>Do you want to extract pages from {{start}} to {{end}} ?</h3></center>
 	<br>
-	<center><form method="get" action="/convert">
-	<input type="submit" value="Extract">
+	<center><form method="get" action="/convert/1">
+        <input type="submit" value="Extract"></form>
 
 </body>
 </html>
