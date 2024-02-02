@@ -2,7 +2,6 @@ from app import app
 from flask import render_template, request, send_file
 from model.pdfTools import Cropper,PDFWord
 import os
-
 @app.route("/")
 def upload():
     return render_template("index.html")
