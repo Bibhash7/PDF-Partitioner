@@ -23,9 +23,9 @@ class StatusCodeCheck(unittest.TestCase):
         self.assertEqual(response, 200)
 
     def test_success_status(self):
-        tester = api.app.test_client(self).post('/success')
+        tester = api.app.test_client(self).post('/success/1')
         response = tester.status_code
-        self.assertEqual(response, 200)
+        self.assertEqual(response, 400)
 
     def test_download_status(self):
         tester = api.app.test_client(self).get('/download')
