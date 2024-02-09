@@ -14,15 +14,15 @@ The project follows MVC architecture, industry level coding standards, feature b
 ## Flow Chart
 ``` mermaid
 graph TD;
-    A[Home]-->P[Partitioner];
-    A-->W[Convert to word];
-    A-->M[Merge];
-    P-->U[Upload File];
-    U-->CON{Check for file format and range}
-    CON--Yes--> CVT[Extract]
-    CVT-->DNLD[Download]
-    CON--NO--> NCVT[Exception]
-    W-->U
+A[Home]-->P[Partitioner];
+A-->W[Convert to word];
+A-->M[Merge];
+P-->U[Upload File];
+U-->CON{Check for file format and range}
+CON--Yes--> CVT[Extract]
+CVT-->DNLD[Download]
+CON--NO--> NCVT[Exception]
+W-->U
     
 ```
 
