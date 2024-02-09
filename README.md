@@ -12,6 +12,13 @@ This flask based web application is designed for:
 The project follows MVC architecture, industry level coding standards, feature branching (for Github), unit testing and as well as hosted in a remote server.
 
 ## Flow Chart
+```
+graph TD;
+    A-->B;
+    A-->C;
+    B-->D;
+    C-->D;
+```
 
 [![PDF-Partitioner.png](https://i.postimg.cc/D015XMds/PDF-Partitioner.png)](https://postimg.cc/MfKyktLK)
 
