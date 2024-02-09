@@ -12,7 +12,7 @@ This flask based web application is designed for:
 The project follows MVC architecture, industry level coding standards, feature branching (for Github), unit testing and as well as hosted in a remote server.
 
 ## Flow Chart
-```
+``` mermaid
 graph TD;
     A-->B;
     A-->C;
