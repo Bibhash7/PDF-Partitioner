@@ -18,9 +18,12 @@ graph TD;
     A-->W[Convert to word];
     A-->M[Merge];
     P-->U[Upload File];
-    U-->CON{Check: File is in .pdf or password protected}
+    U-->CON{Check for file format and range}
     CON--Yes--> CVT[Extract]
+    CVT-->DNLD[Download]
     CON--NO--> NCVT[Exception]
+    W-->U
+    
 ```
 
 [![PDF-Partitioner.png](https://i.postimg.cc/D015XMds/PDF-Partitioner.png)](https://postimg.cc/MfKyktLK)
