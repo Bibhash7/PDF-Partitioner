@@ -14,10 +14,13 @@ The project follows MVC architecture, industry level coding standards, feature b
 ## Flow Chart
 ``` mermaid
 graph TD;
-    A[Home]-->B[Partitioner];
-    A-->C[Convert to word];
-    A-->D[Merge];
-    C-->D;
+    A[Home]-->P[Partitioner];
+    A-->W[Convert to word];
+    A-->M[Merge];
+    P-->U[Upload File];
+    U-->CON{Check: File is in .pdf or password protected}
+    CON--Yes--> CVT[Extract]
+    CON--NO--> NCVT[Exception]
 ```
 
 [![PDF-Partitioner.png](https://i.postimg.cc/D015XMds/PDF-Partitioner.png)](https://postimg.cc/MfKyktLK)
