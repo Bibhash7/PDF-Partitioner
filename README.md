@@ -18,7 +18,7 @@ A[Home]-->P[Partitioner];
 A-->W[Convert to word];
 A-->M[Merge];
 P-->U[Upload File];
-U-->CON{Check for file format and range}
+U-->CON{Correct format, correct range}
 CON--Yes--> CVT[Extract]
 CVT-->DNLD[Download]
 CON--NO--> NCVT[Exception]
