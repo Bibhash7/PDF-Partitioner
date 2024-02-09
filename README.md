@@ -5,7 +5,7 @@ https://bloggyweb.pythonanywhere.com/
 
 ## Description:
 This flask based web application is designed for:
-1. Extracting pages from a PDF with specified range. eg- From a 100 page PDF, extract page 2 to 17.   &#x2611;
+1. Extracting pages from a PDF from a specified range. eg- From a 100 page PDF, extract page 2 to 17.   &#x2611;
 2. Converting PDF into words.                                                                         &#x2611;
 3. Merge PDF files. (ongoing)                                                                         &#x2610;
 
