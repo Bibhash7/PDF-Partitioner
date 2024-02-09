@@ -14,9 +14,9 @@ The project follows MVC architecture, industry level coding standards, feature b
 ## Flow Chart
 ``` mermaid
 graph TD;
-    A-->B;
-    A-->C;
-    B-->D;
+    A[Home]-->B[Partitioner];
+    A-->C[Convert to word];
+    A-->D[Merge];
     C-->D;
 ```
 
