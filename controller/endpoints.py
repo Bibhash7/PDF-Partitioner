@@ -1,6 +1,8 @@
 from app import app
 from flask import render_template, request, send_file
-from model.pdfTools import Cropper,PDFWord
+from model.CropperTools import Cropper
+from model.WordConverter import PDFWord
+
 import os
 @app.route("/")
 def upload():
@@ -17,57 +19,57 @@ def merge():
 def word():
     return render_template("word_home.html")
 
-@app.route("/success/<id>",methods=["POST"])
-def success(id):
-    route = int(id)
+@app.route("/success/<page_id>",methods=["POST"])
+def success(page_id):
+    route = int(page_id)
     if route == 1:
         success.start_page=int(request.form['start'])
         success.end_page=int(request.form['end'])
-        f=request.files['file']
-        success.file_name=f.filename
-        f.save(success.file_name)
+        fileObject=request.files['file']
+        success.file_name=fileObject.filename
+        fileObject.save(success.file_name)
         return render_template("success.html",start=success.start_page,
                                end=success.end_page,name=success.file_name)
     else:
-        f = request.files['file']
-        success.file_name = f.filename
-        f.save(success.file_name)
+        fileObject = request.files['file']
+        success.file_name = fileObject.filename
+        fileObject.save(success.file_name)
         return render_template("success_word.html", name=success.file_name)
 
 
 
-@app.route("/convert/<id>")
-def convert(id):
-    route = int(id)
+@app.route("/convert/<page_id>")
+def convert(page_id):
+    route = int(page_id)
 
-    if id == 1:
+    if route == 1:
         flag = Cropper.cropper(success.start_page,success.end_page,success.file_name)
         if(flag == 0):
             return render_template("download.html")
         elif(flag == 1):
             os.remove(success.file_name)
-            msg = "Format Error: Please upload non encrypted PDF file."
-            return render_template("exception.html",msg = msg)
+            error_format_mismatch_message = "Format Error: Please upload non encrypted PDF file."
+            return render_template("exception.html", message = error_format_mismatch_message)
         else:
-            msg = f"""Failed: The PDF has only {flag} pages. Correct the range:"""
+            error_range_message = f"""Failed: The PDF has only {flag} pages. Correct the range:"""
             os.remove(success.file_name)
-            return render_template("exception.html", msg = msg)
+            return render_template("exception.html", message = error_range_message)
 
     else:
         flag = PDFWord.wordMaker(success.file_name)
         if flag == 0:
             return render_template("download_word.html")
         else:
-            msg = "Some Error occured while uploading file."
-            return render_template("exception.html", msg)
+            error_file_upload_message = "Some Error occured while uploading file."
+            return render_template("exception.html", message = error_file_upload_message)
 
 
 
 
-@app.route("/download/<id>")
-def download(id):
-    route = int(id)
-    if id == 1:
+@app.route("/download/<page_id>")
+def download(page_id):
+    route = int(page_id)
+    if route == 1:
         try:
             try:
                 filename=success.file_name.split(".")[0]+"cropped.pdf"
@@ -76,17 +78,17 @@ def download(id):
                 os.remove(filename)
                 os.remove(success.file_name)
         except:
-            msg = "File can be downloaded only once. Reload the application and try again."
-            return render_template("exception.html",msg = msg)
+            error_download_message = "File can be downloaded only once. Reload the application and try again."
+            return render_template("exception.html",message = error_download_message)
     else:
         try:
             filename = success.file_name.split(".")[0]+"converted.docx"
             return send_file(filename,as_attachment=True)
         except:
-            msg = "Some Exception occured."
-            return render_template("exception.html", msg=msg)
+            error_word_message = "Some Exception occured."
+            return render_template("exception.html", message=error_word_message)
 
 @app.errorhandler(404)
-def message(msg):
-    msg = "Something went wrong. Please try again."
-    return render_template("exception.html",msg=msg)
+def pageNotFound(message):
+    error_404_message = "Something went wrong. Please try again."
+    return render_template("exception.html",message=error_404_message)
