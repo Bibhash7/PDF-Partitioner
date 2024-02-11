@@ -6,6 +6,7 @@ import os
 
 cropper_object = Cropper()
 word_converter_object = PDFWord()
+
 @app.route("/")
 def upload():
     return render_template("index.html")
