@@ -2,10 +2,14 @@ from app import app
 from flask import render_template, request, send_file
 from model.cropper_tools import Cropper
 from model.word_converter import PDFWord
+from model.merger_tools import Marger
 import os
+
+list_of_files = []
 
 cropper_object = Cropper()
 word_converter_object = PDFWord()
+merger_object = Marger()
 
 @app.route("/")
 def upload():
@@ -35,11 +39,19 @@ def success(page_id):
         return render_template("success.html", start = success.start_page,
                                end = success.end_page, name = success.file_name)
 
-    else:
+    elif route == 2:
         file_object = request.files['file']
         success.file_name = file_object.filename
         file_object.save(success.file_name)
         return render_template("success_word.html", name = success.file_name)
+
+    elif route == 3:
+        file_list_object = request.files.getlist("files")
+        for file_object in file_list_object:
+            file_object.save(file_object.filename)
+            list_of_files.append(file_object.filename)
+        return render_template("success_merge.html")
+
 
 @app.route("/convert/<page_id>")
 def convert(page_id):
@@ -59,7 +71,7 @@ def convert(page_id):
             os.remove(success.file_name)
             return render_template("exception.html", message = error_range_message)
 
-    else:
+    elif route == 2:
         flag = word_converter_object.word_maker(success.file_name)
         if flag == 0:
             return render_template("download_word.html")
@@ -67,6 +79,16 @@ def convert(page_id):
         else:
             error_file_upload_message = "Some Error occured while uploading file."
             return render_template("exception.html", message = error_file_upload_message)
+
+    elif route == 3:
+        flag = merger_object.merge_pdf(list_of_files)
+        if flag == 0:
+            print(flag)
+            return render_template("download_merge.html")
+        else:
+            error_merge_message = "Failed: Some exception occured while merging"
+            return render_template("exception.html",message = error_merge_message)
+
 
 @app.route("/download/<page_id>")
 def download(page_id):
@@ -85,7 +107,7 @@ def download(page_id):
             error_download_message = "File can be downloaded only once. Reload the application and try again."
             return render_template("exception.html",message = error_download_message)
 
-    else:
+    elif route == 2:
         try:
             filename = success.file_name.split(".")[0]+"converted.docx"
             return send_file(filename, as_attachment = True)
@@ -93,6 +115,15 @@ def download(page_id):
         except:
             error_word_message = "Some Exception occured."
             return render_template("exception.html", message = error_word_message)
+
+    elif route == 3:
+        try:
+            filename = "merged.pdf"
+            return send_file(filename, as_attachment= True)
+        except:
+            error_merge_message = "Some Exception occured."
+            return render_template("exception.html", message=error_merge_message)
+
 
 @app.errorhandler(404)
 def page_not_found(message):
