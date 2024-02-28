@@ -14,11 +14,6 @@
             overflow: hidden;
 
         }
-        body {
-            font-family: Arial, sans-serif;
-            margin: auto;
-        }
-
         form {
             max-width: 600px;
             margin: auto;
@@ -52,11 +47,10 @@
 </head>
 <body>
 
-   <center><h1>Upload Files</h1></center>
-   <form action = "/success/3" method="POST" enctype="multipart/form-data">
-        <input type="file" name="files" multiple>
-        <input type = "submit" value="Upload">
-    </form>
+    <center><h1>Files uploaded successfully:</h1></center>
+	<br>
+	<center><form method="get" action="/convert/3">
+        <input type="submit" value="Convert"></form>
 
 </body>
 </html>
