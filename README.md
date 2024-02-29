@@ -5,16 +5,17 @@ https://bloggyweb.pythonanywhere.com/
 
 
 ## Overview 
-This application provides comprehensive functionality for interacting with PDF documents, catering to various user needs such as extracting specific sections, converting PDFs to Word documents, and merging multiple PDF files seamlessly all in one place.
+This application provides comprehensive functionality for interacting with PDF documents, catering to various user needs such as extracting specific sections, converting PDFs to Word documents, merging multiple PDF files and converting word document into pdf seamlessly all in one place.
 
 
 
 
 ## Description:
 This flask based web application is designed for:
-1. Extracting pages from a PDF from a specified range. eg- From a 100 page PDF, extract page 2 to 17.   &#x2611;
-2. Converting PDF into words.                                                                         &#x2611;
-3. Merge PDF files.                                                                          &#x2611;
+1. Extract pages from a PDF from a specified range. eg- From a 100 page PDF, extract page 2 to 17.   &#x2611;
+2. Convert PDF into words.                                                                           &#x2611;
+3. Merge PDF files.                                                                                  &#x2611;
+4. Convert Word document into PDF.                                                                   &#x2611;
 
 The project follows MVC architecture, industry level coding standards, feature branching (for Github), unit testing and as well as hosted in a remote server.
 
@@ -24,19 +25,21 @@ graph TD;
 A[Home]-->P[Partitioner];
 A-->W[Convert to word];
 A-->M[Merge];
+A-->WP[Word to PDF]
 P-->U[Upload File];
 U-->CON{Correct format, correct range}
 CON--Yes--> CVT[Extract]
 CVT-->DNLD[Download]
 CON--NO--> NCVT[Exception]
 W-->U
-M-->U    
+M-->U
+WP-->U    
 ```
 
 ## User Guide:
 1. Home Screen:
 
-   [![PDFia-1.png](https://i.postimg.cc/W3092PVT/PDFia-1.png)](https://postimg.cc/r0FGJ3zP)
+   [![PDFia-5.png](https://i.postimg.cc/t41vP0jG/PDFia-5.png)](https://postimg.cc/v4svFNT0)
    
 2. Upload file/files:
    
@@ -44,7 +47,7 @@ M-->U
 
       [![PDFia-2.png](https://i.postimg.cc/QtZbYnTP/PDFia-2.png)](https://postimg.cc/FfG37pGg)
 
-   b. For Word/Merger:
+   b. For Word/Merger/Docx to PDF converter:
 
    [![PDFia-3.png](https://i.postimg.cc/QMQ5CNF4/PDFia-3.png)](https://postimg.cc/wtB3bpcL)
    [![PDFia-4.png](https://i.postimg.cc/nhtqJQzj/PDFia-4.png)](https://postimg.cc/tY2sdJFp)
