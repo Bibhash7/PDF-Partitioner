@@ -14,11 +14,6 @@
             overflow: hidden;
 
         }
-        body {
-            font-family: Arial, sans-serif;
-            margin: auto;
-        }
-
         form {
             max-width: 600px;
             margin: auto;
@@ -51,28 +46,12 @@
     </style>
 </head>
 <body>
-    <center><h1><u>PDFia</u></h1></center>
-    <center><h1> Most of the Tools you need to work on a PDF in one place.</h1></center>
-    <br>
-    <form action="/crop" method = "get">
-    <center><input type="submit" value="Crop"></center>
-    </form>
-    <br>
-    <form  action="/merge" method = "get">
-    <center><input type="submit" value="Merge"></center>
-    </form>
-    <br>
-    <form  action="/word" method = "get">
-    <center><input type="submit" value="Convert to Word"></center>
-    </form>
-    <br>
 
-    <form  action="/docxtopdf" method = "get">
-    <center><input type="submit" value="Convert Word into PDF"></center>
-        <br>
-    <right><span>&copy; Bibhash Ghosh</span></right>
-    </form>
-
+    <center><h1>File uploaded successfully:</h1></center>
+	<center><p>File Name: {{name}}</p></center>
+	<br>
+	<center><form method="get" action="/convert/4">
+        <input type="submit" value="Convert"></form>
 
 </body>
 </html>
