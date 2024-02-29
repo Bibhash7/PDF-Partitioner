@@ -51,28 +51,14 @@
     </style>
 </head>
 <body>
-    <center><h1><u>PDFia</u></h1></center>
-    <center><h1> Most of the Tools you need to work on a PDF in one place.</h1></center>
-    <br>
-    <form action="/crop" method = "get">
-    <center><input type="submit" value="Crop"></center>
-    </form>
-    <br>
-    <form  action="/merge" method = "get">
-    <center><input type="submit" value="Merge"></center>
-    </form>
-    <br>
-    <form  action="/word" method = "get">
-    <center><input type="submit" value="Convert to Word"></center>
-    </form>
-    <br>
 
-    <form  action="/docxtopdf" method = "get">
-    <center><input type="submit" value="Convert Word into PDF"></center>
-        <br>
-    <right><span>&copy; Bibhash Ghosh</span></right>
-    </form>
 
+    <center><h1><u>PDF to Word Converter</u></h1></center>
+    <form id="pdfForm" action = "/success/4" method = "post" enctype="multipart/form-data">
+    <label for="pdfFile">Select Word File:</label>
+        <input type="file" id="pdfFile" name="file" accept=".docx" required>
+        <input type = "submit" value="Upload">
+    </form>
 
 </body>
 </html>

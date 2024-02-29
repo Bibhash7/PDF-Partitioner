@@ -3,6 +3,7 @@ from flask import render_template, request, send_file
 from model.cropper_tools import Cropper
 from model.word_converter import PDFWord
 from model.merger_tools import Marger
+from model.word_to_pdf_tools import WordtoPDF
 import os
 
 list_of_files = []
@@ -10,6 +11,7 @@ list_of_files = []
 cropper_object = Cropper()
 word_converter_object = PDFWord()
 merger_object = Marger()
+docx_to_pdf_object = WordtoPDF()
 
 @app.route("/")
 def upload():
@@ -26,6 +28,10 @@ def merge_pdf():
 @app.route("/word")
 def to_word():
     return render_template("word_home.html")
+
+@app.route("/docxtopdf")
+def docx_to_pdf():
+    return render_template("word_to_pdf_home.html")
 
 @app.route("/success/<page_id>",methods = ["POST"])
 def success(page_id):
@@ -51,6 +57,12 @@ def success(page_id):
             file_object.save(file_object.filename)
             list_of_files.append(file_object.filename)
         return render_template("success_merge.html")
+
+    elif route == 4:
+        file_object = request.files['file']
+        success.file_name = file_object.filename
+        file_object.save(success.file_name)
+        return render_template("success_word_to_pdf.html", name=success.file_name)
 
 
 @app.route("/convert/<page_id>")
@@ -89,6 +101,16 @@ def convert(page_id):
             error_merge_message = "Failed: Some exception occured while merging"
             return render_template("exception.html",message = error_merge_message)
 
+    elif route == 4:
+        flag = docx_to_pdf_object.word_to_pdf_converter(success.file_name)
+        if flag == 0:
+            print(flag)
+            return render_template("download_pdf.html")
+        else:
+            error_word_to_pdf_message = "Failed: Some exception occured."
+            return render_template("exception.html", message=error_word_to_pdf_message)
+
+
 
 @app.route("/download/<page_id>")
 def download(page_id):
@@ -123,6 +145,14 @@ def download(page_id):
         except:
             error_merge_message = "Some Exception occured."
             return render_template("exception.html", message=error_merge_message)
+
+    elif route == 4:
+        try:
+            filename = success.file_name.split(".")[0] + "_converted.pdf"
+            return send_file(filename, as_attachment=True)
+        except:
+            error_word_to_pdf_message = "Some Exception occured."
+            return render_template("exception.html", message=error_word_to_pdf_message)
 
 
 @app.errorhandler(404)
