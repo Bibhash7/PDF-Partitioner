@@ -51,6 +51,7 @@ WP-->U
 
    [![PDFia-3.png](https://i.postimg.cc/QMQ5CNF4/PDFia-3.png)](https://postimg.cc/wtB3bpcL)
    [![PDFia-4.png](https://i.postimg.cc/nhtqJQzj/PDFia-4.png)](https://postimg.cc/tY2sdJFp)
+   [![PDFia-6.png](https://i.postimg.cc/SRswjD7Z/PDFia-6.png)](https://postimg.cc/phw06QS8)
        
 ## Milestones:
 Start Date:      18-Jan-2024
@@ -62,6 +63,8 @@ Word Converter:  31-Jan-2024
 Unit Test:       03-Feb-2024
 
 Merger:          28-Feb-2024
+
+Word to PDF:     01-Mar-2024
 
 
 ## Testing:
@@ -78,6 +81,7 @@ Unit tests to check status code for each API.
 |  PyPDF2 3.0.1      | To read pdf and create a new pdf                    |  
 |  pdf2docx 0.5.8    | To convert pdf into word                            |   
 |  Flask 3.0.2       | To Create API endpoints and for overall hosting     |  
+|  docx2pdf 0.1.8    | To convert docx into pdf                            |
 
 ## Future plans:
 1. Can extend to some other pdf operations like, text extraction, pdf to ppt, pdf signature etc.
