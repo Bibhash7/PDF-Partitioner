@@ -20,21 +20,8 @@ This flask based web application is designed for:
 The project follows MVC architecture, industry level coding standards, feature branching (for Github), unit testing and as well as hosted in a remote server.
 
 ## Flow Chart
-``` mermaid
-graph TD;
-A[Home]-->P[Partitioner];
-A-->W[Convert to word];
-A-->M[Merge];
-A-->WP[Word to PDF]
-P-->U[Upload File];
-U-->CON{Correct format, correct range}
-CON--Yes--> CVT[Extract]
-CVT-->DNLD[Download]
-CON--NO--> NCVT[Exception]
-W-->U
-M-->U
-WP-->U    
-```
+
+[![PDFia-7.png](https://i.postimg.cc/G2qMkbjn/PDFia-7.png)](https://postimg.cc/1nVcShTv)
 
 ## User Guide:
 1. Home Screen:
